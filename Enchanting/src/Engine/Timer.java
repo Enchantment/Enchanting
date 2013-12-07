@@ -22,5 +22,5 @@ public class Timer{
     public double getRunTime(){
         return (System.nanoTime()-startTime);
     }
-
+    
 }

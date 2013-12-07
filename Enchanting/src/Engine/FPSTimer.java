@@ -1,6 +1,5 @@
 package Engine;
 
-
 public class FPSTimer extends Timer{
     int maxFPS, FPS;
     double delta;
