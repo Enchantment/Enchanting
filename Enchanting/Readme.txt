@@ -1,0 +1,2 @@
+Enchanting is a 2d tile based game, set in a medieval fantasy world! It's inspired by old 2d Rpg's, such as Legend of Zelda, but also by more modern RPG's, such as WoW, Runescape, Diablo. Its goal is to combine the best of those RPG's, and allow for fully customizable characters. 
+There will be several classes, items, dungeons, pets, mounts, crafting skills, and all the things expected from an RPG.
