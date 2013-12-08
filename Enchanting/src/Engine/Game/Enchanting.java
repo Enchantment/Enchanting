@@ -18,9 +18,9 @@ public class Enchanting {
 	Timer mainTimer;
 	public Enchanting(){
 		mainWindow = new Window("Enchanting", 1200, 900, false);
-		cameraLocation = new Vec2f(232,200);
-		curLevel = new Level("Resources/Levels/terrainMap3.txt");
-		mainTimer = new FPSTimer(60);
+		cameraLocation = new Vec2f(200,0);
+		curLevel = new Level("Resources/Levels/bigassmap.txt");
+		mainTimer = new FPSTimer();
 	}
 	public void start(){
 		mainWindow.launchWindow();
@@ -55,6 +55,8 @@ public class Enchanting {
 		bs.show();
 	}
 	public void applyLogic(){
+		double time = mainTimer.getTimeS();
+		//cameraLocation.x -= 300*time;
 	}
 	public void handleInput(){
 		

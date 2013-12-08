@@ -4,6 +4,12 @@ public class FPSTimer extends Timer{
 	
 	private int maxFPS, lastFPS, frames;
 	private double delta;
+	public FPSTimer(){
+        super();
+        this.maxFPS = 10000000;
+        lastFPS = 0;
+        delta = 0;
+	}
 	public FPSTimer(int maxFPS){
         super();
         this.maxFPS = maxFPS;

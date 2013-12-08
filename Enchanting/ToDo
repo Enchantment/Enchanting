@@ -1,3 +1,7 @@
 TO DO LIST:
 -Change loadMap method so that it loads files exported from Tiled.(currently loads map from simplified file)
 -Change the load Resources part in level so that the tileset directory comes from the Tiled file aswell.
+-Change main game class. Get a class that contains all of the game resources. 
+-Get some basic audio
+-Get Mobs and all that crap
+-Implement max fps without affecting movement of stuff
