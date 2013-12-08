@@ -6,3 +6,5 @@ TO DO LIST:
 -Get Mobs and all that crap
 -Implement max fps without affecting movement of stuff
 -CHeck ways to imrpove drawing performance... check why the fuck when u use a pointer for 2nd tileset it increases speed by a lot.
+-Make it so that no class actually loads the image, they simply use the one loaded in GameResource class
+-Add a command interpreter that will read a file in order to add all objects

@@ -19,23 +19,7 @@ public class Tileset {
 	
 	private BufferedImage spritesheet;
 	public Tile [] tiles;
-	
-	public Tileset(String spriteFilename, String tileInfo, int tileWidth, int tileHeight){
-		this.tileWidth = tileWidth;
-		this.tileHeight = tileHeight;
-		try {
-			spritesheet = ImageIO.read(new File(spriteFilename));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		if(spritesheet == null) throw new GameException("Failed to load tileset: " + spriteFilename);
-		this.numTilesX = spritesheet.getWidth()/tileWidth;
-		this.numTilesY = spritesheet.getHeight()/tileHeight;
-		totalTiles = numTilesX*numTilesY;
-		tiles = new Tile[numTilesX*numTilesY];
-		loadTiles(tileInfo);
-		
-	}
+
 	public Tileset(BufferedImage spritesheet, String tileInfo, int tileWidth, int tileHeight){
 		this.tileWidth = tileWidth;
 		this.tileHeight = tileHeight;

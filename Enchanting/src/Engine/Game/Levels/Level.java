@@ -1,35 +1,33 @@
 package Engine.Game.Levels;
 
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 
-import javax.imageio.ImageIO;
-
+import Engine.Game.GameResources;
 import Engine.Game.Utilities.Maths.GameException;
 import Engine.Game.Utilities.Maths.Rectangle.Rect2i;
 import Engine.Game.Utilities.Maths.Vector.Vec2f;
 import Engine.Graphics.Window;
 
 public class Level {
+	String name;
 	int width, height;
 	int tileWidth, tileHeight;
 	int [][] terrainMap;
 	int [][] terrainObjectMap;
 	Tileset tTileset;
 	Tileset tOTileset;
-	public Level(String levelMap){
+	public Level(String levelMap, String name){
 		loadLevel(levelMap);
-		tTileset = new Tileset("Resources/Tilesets/terrain.jpg", "Resources/Tilesets/terraininfo.txt", tileWidth, tileHeight);
-		tOTileset = new Tileset("Resources/Tilesets/terrainobjects.jpg", "Resources/Tilesets/terraininfo.txt", tileWidth, tileHeight);
+		tTileset = new Tileset(GameResources.terrainTileset, "Resources/Tilesets/terraininfo.txt", tileWidth, tileHeight);
+		tOTileset = new Tileset(GameResources.terrainObjectsTileset, "Resources/Tilesets/terraininfo.txt", tileWidth, tileHeight);
 	}
 	public void drawLevel(Graphics g, Window mainWindow, Vec2f cameraLocation){
 		for(int yLoc = (int) -cameraLocation.y%tileHeight, y = (int) ((yLoc+cameraLocation.y)/tileHeight); yLoc < mainWindow.getHeight(); yLoc+=tileHeight, y++)
 			for(int xLoc = (int) -cameraLocation.x%tileWidth, x = (int) ((xLoc+cameraLocation.x)/tileWidth); xLoc < mainWindow.getWidth(); xLoc+=tileWidth, x++){
+				//Draw only if top tile doesn't fill the entire thing.
 				if(terrainMap[y][x] != -1){
 					if(terrainObjectMap[y][x] == -1){
 						Rect2i box = tTileset.tiles[terrainMap[y][x]].getBox();
