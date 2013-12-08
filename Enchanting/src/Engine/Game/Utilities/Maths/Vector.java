@@ -1,4 +1,4 @@
-package Maths;
+package Engine.Game.Utilities.Maths;
 
 public class Vector {
 	public static class Vec2f{
