@@ -15,11 +15,13 @@ public class Tile {
 	private Rect2i box;
 	private boolean solid, emitter;
 	private Color tileColor;
-	public Tile(Tileset tileset,int ID, boolean solid, boolean emitter){
+	private boolean filled;
+	public Tile(Tileset tileset,int ID, boolean solid, boolean emitter, boolean filled){
 		if(tileset.tiles[ID] != null) throw new GameException("Tile already exists ID:"+ID);
 		this.ID = ID;
 		this.solid = solid;
 		this.emitter = emitter;
+		this.filled = filled;
 		this.box = new Rect2i((ID%tileset.numTilesX*tileset.tileWidth), ID/tileset.numTilesX*tileset.tileHeight, tileset.tileWidth, tileset.tileHeight);
 		//Get average color of the tile. Used for minimap and image map loading
 		int pixels[] = null;
@@ -66,6 +68,9 @@ public class Tile {
 	}
 	public boolean isEmitter(){
 		return emitter;
+	}
+	public boolean isFilled(){
+		return filled;
 	}
 	public Color getTileColor(){
 		return tileColor;

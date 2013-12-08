@@ -5,3 +5,4 @@ TO DO LIST:
 -Get some basic audio
 -Get Mobs and all that crap
 -Implement max fps without affecting movement of stuff
+-CHeck ways to imrpove drawing performance... check why the fuck when u use a pointer for 2nd tileset it increases speed by a lot.

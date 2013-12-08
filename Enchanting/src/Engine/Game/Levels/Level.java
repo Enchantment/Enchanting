@@ -1,9 +1,14 @@
 package Engine.Game.Levels;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
 
 import Engine.Game.Utilities.Maths.GameException;
 import Engine.Game.Utilities.Maths.Rectangle.Rect2i;
@@ -20,16 +25,20 @@ public class Level {
 	public Level(String levelMap){
 		loadLevel(levelMap);
 		tTileset = new Tileset("Resources/Tilesets/terrain.jpg", "Resources/Tilesets/terraininfo.txt", tileWidth, tileHeight);
-		tOTileset = tTileset;//new Tileset("Resources/Tilesets/terrain.jpg", "Resources/Tilesets/terraininfo.txt", tileWidth, tileHeight);
+		tOTileset = new Tileset("Resources/Tilesets/terrainobjects.jpg", "Resources/Tilesets/terraininfo.txt", tileWidth, tileHeight);
 	}
 	public void drawLevel(Graphics g, Window mainWindow, Vec2f cameraLocation){
-		int tilesRendered = 0;
 		for(int yLoc = (int) -cameraLocation.y%tileHeight, y = (int) ((yLoc+cameraLocation.y)/tileHeight); yLoc < mainWindow.getHeight(); yLoc+=tileHeight, y++)
 			for(int xLoc = (int) -cameraLocation.x%tileWidth, x = (int) ((xLoc+cameraLocation.x)/tileWidth); xLoc < mainWindow.getWidth(); xLoc+=tileWidth, x++){
 				if(terrainMap[y][x] != -1){
-					Rect2i box = tTileset.tiles[terrainMap[y][x]].getBox();
-					g.drawImage(tTileset.getImage(), xLoc, yLoc, xLoc+tileWidth, yLoc+tileHeight, box.x, box.y, box.x+box.w, box.y+box.h, null);
-				tilesRendered++;
+					if(terrainObjectMap[y][x] == -1){
+						Rect2i box = tTileset.tiles[terrainMap[y][x]].getBox();
+						g.drawImage(tTileset.getImage(), xLoc, yLoc, xLoc+tileWidth, yLoc+tileHeight, box.x, box.y, box.x+box.w, box.y+box.h, null);				
+					}
+					else if(!tOTileset.tiles[terrainObjectMap[y][x]].isFilled()){
+						Rect2i box = tTileset.tiles[terrainMap[y][x]].getBox();
+						g.drawImage(tTileset.getImage(), xLoc, yLoc, xLoc+tileWidth, yLoc+tileHeight, box.x, box.y, box.x+box.w, box.y+box.h, null);				
+					}
 				}
 				if(terrainObjectMap[y][x] != -1){
 					Rect2i box = tOTileset.tiles[terrainObjectMap[y][x]].getBox();

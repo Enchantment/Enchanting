@@ -3,6 +3,7 @@ package Engine.Game;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.io.File;
 
 import Engine.Game.Levels.Level;
 import Engine.Game.Utilities.FPSTimer;
@@ -18,7 +19,7 @@ public class Enchanting {
 	Timer mainTimer;
 	public Enchanting(){
 		mainWindow = new Window("Enchanting", 1200, 900, false);
-		cameraLocation = new Vec2f(200,0);
+		cameraLocation = new Vec2f(6000,0);
 		curLevel = new Level("Resources/Levels/bigassmap.txt");
 		mainTimer = new FPSTimer();
 	}
@@ -56,7 +57,7 @@ public class Enchanting {
 	}
 	public void applyLogic(){
 		double time = mainTimer.getTimeS();
-		//cameraLocation.x -= 300*time;
+		cameraLocation.x -= 300*time;
 	}
 	public void handleInput(){
 		
