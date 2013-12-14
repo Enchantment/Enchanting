@@ -6,11 +6,12 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import Engine.Game.GameResources;
+import Engine.Game.Entities.Entity;
 import Engine.Game.Utilities.Maths.GameException;
+import Engine.Game.Utilities.Maths.Rectangle.Rect2f;
 import Engine.Game.Utilities.Maths.Rectangle.Rect2i;
 import Engine.Game.Utilities.Maths.Vector.Vec2f;
 import Engine.Graphics.Window;
-
 public class Level {
 	String name;
 	int width, height;
@@ -19,10 +20,12 @@ public class Level {
 	int [][] terrainObjectMap;
 	Tileset tTileset;
 	Tileset tOTileset;
+	Entity testObject;
 	public Level(String levelMap, String name){
 		loadLevel(levelMap);
 		tTileset = new Tileset(GameResources.terrainTileset, "Resources/Tilesets/terraininfo.txt", tileWidth, tileHeight);
 		tOTileset = new Tileset(GameResources.terrainObjectsTileset, "Resources/Tilesets/terraininfo.txt", tileWidth, tileHeight);
+		testObject = new Entity(GameResources.testObjectEntity, new Rect2f(30,30,32,32));
 	}
 	public void drawLevel(Graphics g, Window mainWindow, Vec2f cameraLocation){
 		for(int yLoc = (int) -cameraLocation.y%tileHeight, y = (int) ((yLoc+cameraLocation.y)/tileHeight); yLoc < mainWindow.getHeight(); yLoc+=tileHeight, y++)
@@ -43,6 +46,7 @@ public class Level {
 					g.drawImage(tOTileset.getImage(), xLoc, yLoc, xLoc+tileWidth, yLoc+tileHeight, box.x, box.y, box.x+box.w, box.y+box.h, null);
 				}
 			}
+		testObject.draw(g, cameraLocation, mainWindow);
 	}
 	
 	public void loadLevel(String levelMap){

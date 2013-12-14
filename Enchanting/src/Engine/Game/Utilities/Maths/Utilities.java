@@ -40,4 +40,13 @@ public class Utilities {
 			return true;
 		return false;
 	}
+	public static boolean isTransparent(int[] pixels){
+		for(int pixel : pixels){
+			Color temp = new Color(pixel);
+			int a = temp.getAlpha();
+			if(temp.getAlpha() < 255) 
+				return true;	
+		}
+		return false;
+	}
 }

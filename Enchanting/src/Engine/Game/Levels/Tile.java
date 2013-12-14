@@ -21,13 +21,14 @@ public class Tile {
 		this.ID = ID;
 		this.solid = solid;
 		this.emitter = emitter;
-		this.filled = filled;
 		this.box = new Rect2i((ID%tileset.numTilesX*tileset.tileWidth), ID/tileset.numTilesX*tileset.tileHeight, tileset.tileWidth, tileset.tileHeight);
 		//Get average color of the tile. Used for minimap and image map loading
 		int pixels[] = null;
 		int a = tileset.getImage().getWidth();
 		pixels = tileset.getImage().getRGB(box.x, box.y, box.w, box.h, null, 0, box.w);
 		this.tileColor = Utilities.averageColor(pixels);
+
+		this.filled = Utilities.isTransparent(pixels);
 		//If color already being used, slightly change it
 		while(checkColorExists(tileset.tiles, this.tileColor)){
 			int rand = Utilities.rand(1,3);

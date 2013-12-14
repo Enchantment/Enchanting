@@ -11,7 +11,9 @@ import Engine.Game.Utilities.Maths.Vector.Vec2f;
 import Engine.Graphics.Window;
 
 public class Enchanting {
-	public static Window  mainWindow;
+	
+	public static Game game;
+	/*public static Window  mainWindow;
 	boolean running;
 	public static Vec2f cameraLocation;
 	Level curLevel;
@@ -20,7 +22,7 @@ public class Enchanting {
 	public Enchanting(){
 		resources = new GameResources();
 		mainWindow = new Window("Enchanting", 1200, 900, false);
-		cameraLocation = new Vec2f(6000,0);
+		cameraLocation = new Vec2f(0,0);
 		curLevel = new Level("Resources/Levels/bigassmap.txt", "Test_WORLD");
 		mainTimer = new FPSTimer();
 	}
@@ -58,13 +60,13 @@ public class Enchanting {
 	}
 	public void applyLogic(){
 		double time = mainTimer.getTimeS();
-		cameraLocation.x -= 300*time;
+		//cameraLocation.x -= 300*time;
 	}
 	public void handleInput(){
 		
-	}
+	}*/
 	public static void main(String[] args) {
-		Enchanting game = new Enchanting();
+		game = new Game();
 		game.start();
 	}
 

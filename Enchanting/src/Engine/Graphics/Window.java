@@ -6,7 +6,7 @@ import java.awt.Canvas;
 import javax.swing.JFrame;
 
 public class Window extends Canvas{
-	JFrame frame;
+	public JFrame frame;
 	public Window(String caption, int width, int height, boolean resizable){
 		frame = new JFrame(caption);
 		frame.setSize(width, height);

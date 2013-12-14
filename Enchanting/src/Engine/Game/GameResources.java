@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import Engine.Game.Entities.Entity;
 import Engine.Game.Utilities.Maths.GameException;
 
 public class GameResources {
@@ -15,7 +16,11 @@ public class GameResources {
 	public static BufferedImage terrainTileset;
 	public static BufferedImage terrainObjectsTileset;
 	public static BufferedImage testObject;
+	public static Entity testObjectEntity;
 	public GameResources(){
+		load();
+	}
+	public void load(){
 		try {
 			terrainTileset = ImageIO.read(new File(tilesetsPath + "terrain.jpg"));
 		} catch (IOException e) {
@@ -34,5 +39,6 @@ public class GameResources {
 			e.printStackTrace();
 		}
 		if(terrainObjectsTileset == null) throw new GameException("Failed to load object spritesheet");
+		testObjectEntity =  new Entity(testObject, "test", 32,32 );
 	}
 }

@@ -8,3 +8,4 @@ TO DO LIST:
 -CHeck ways to imrpove drawing performance... check why the fuck when u use a pointer for 2nd tileset it increases speed by a lot.
 -Make it so that no class actually loads the image, they simply use the one loaded in GameResource class
 -Add a command interpreter that will read a file in order to add all objects
+-Make it so that when loading
